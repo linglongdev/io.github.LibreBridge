@@ -1,0 +1,65 @@
+From b6e7895c116ad4b7af3d7fe530c4eee0b4f15720 Mon Sep 17 00:00:00 2001
+From: wjyrich <1071633242@qq.com>
+Date: Sat, 14 Sep 2024 15:53:45 +0800
+Subject: [PATCH] install
+
+---
+ LibreBridge.desktop | 11 +++++++++++
+ LibreBridge.pro     | 11 +++++++++++
+ src/LibreBridge.hpp |  2 +-
+ 3 files changed, 23 insertions(+), 1 deletion(-)
+ create mode 100644 LibreBridge.desktop
+
+diff --git a/LibreBridge.desktop b/LibreBridge.desktop
+new file mode 100644
+index 0000000..fb1b1ba
+--- /dev/null
++++ b/LibreBridge.desktop
+@@ -0,0 +1,11 @@
++[Desktop Entry]
++Categories=Accessibility;Qt;Utility;
++Exec=LibreBridge
++Name=LibreBridge
++Name[zh_CN]=LibreBridge
++Icon=LibreBridge
++StartupNotify=false
++Terminal=false
++Type=Application
++GenericName=LibreBridge
++Version=0.1
+\ No newline at end of file
+diff --git a/LibreBridge.pro b/LibreBridge.pro
+index f01b34b..5f678b4 100644
+--- a/LibreBridge.pro
++++ b/LibreBridge.pro
+@@ -70,3 +70,14 @@ SOURCES +=	src/AIPlayer.cpp \
+ 			src/gui/SeedValidator.cpp \
+ 			src/gui/PauseClickGrabber.cpp \
+ 			src/gui/Common.cpp
++
++target.path = $$PREFIX/bin
++desktop.files = LibreBridge.desktop
++desktop.path = $$PREFIX/share/applications/
++icons.path = $$PREFIX/share/icons/hicolor/apps/
++icons.files = images/LibreBridge.png
++images.path = $$PREFIX/images
++images.files = images/*
++fonts.path = $$PREFIX/fonts
++fonts.files = fonts/*
++INSTALLS += target desktop icons images fonts
+diff --git a/src/LibreBridge.hpp b/src/LibreBridge.hpp
+index cd2a250..f674006 100644
+--- a/src/LibreBridge.hpp
++++ b/src/LibreBridge.hpp
+@@ -3,7 +3,7 @@
+ 
+ #include <string>
+ #include <vector>
+-
++#include <cstdint>
+ // Card values are 2-14, to be interpreted into T,J,Q,K,A with Card::valueToChar
+ #define RANDOMNESS_SIZE unsigned long long
+ #define RANDOMNESS_QT_SIZE toULongLong
+-- 
+2.43.4
+
